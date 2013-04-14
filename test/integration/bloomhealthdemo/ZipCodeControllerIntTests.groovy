@@ -17,9 +17,12 @@ class ZipCodeControllerIntTests {
 
     @Test
     void testDelete(){
+        def zc = new ZipCode(postalCode: "74833", stateCode: "MA", stateName: "Massachusetts", cityName: "Boston", countyName: "none")
+        def result = zc.save()
+        assert !result.hasErrors()
+        assert ZipCode.count == 1
+
         def controller = new ZipCodeController();
-        new ZipCodeDataService().loadZipData()
-        assert ZipCode.count != 0
         controller.delete()
         assert "/zipCode/list" == controller.response.redirectedUrl
         assert ZipCode.count == 0
