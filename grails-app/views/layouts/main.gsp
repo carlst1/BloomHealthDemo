@@ -18,9 +18,9 @@
 		<r:layoutResources />
 	</head>
 	<body>
-            <div id="grailsLogo" role="banner"><h1>Bloom Health Grails Demo</h1></div>
+            <div id="logo" role="banner"><h1>Bloom Health Grails Demo</h1></div>
 		<g:layoutBody/>
-		<div class="footer" role="contentinfo">Put together by: Tim Carlson</div>
+		<div class="footer" role="contentinfo">Create by: Tim Carlson</div>
 
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<g:javascript library="application"/>

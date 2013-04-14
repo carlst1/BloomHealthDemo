@@ -47,8 +47,9 @@ body {
 	        box-shadow: 0 0 0.3em #0e005b;
 }
 
-#grailsLogo {
+#logo {
 	background-color: #188dbf;
+    padding: 1em;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -594,3 +595,11 @@ a.skip {
 	position: absolute;
 	left: -9999px;
 }
+
+.tagCloud {
+    background-color: #188dbf;
+    border: 1em;
+    border-color: #000000;
+    margin: 0.25em 0.7em;
+}
+

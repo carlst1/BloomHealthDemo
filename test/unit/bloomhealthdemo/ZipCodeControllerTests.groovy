@@ -9,12 +9,6 @@ import grails.test.mixin.*
 @Mock(ZipCode)
 class ZipCodeControllerTests {
 
-    def populateValidParams(params) {
-        assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
-    }
-
     void testIndex() {
         controller.index()
         assert "/zipCode/list" == response.redirectedUrl
@@ -24,24 +18,19 @@ class ZipCodeControllerTests {
 
         def model = controller.list()
 
-        assert model.zipCodeInstanceList.size() == 0
-        assert model.zipCodeInstanceTotal == 0
-    }
-
-    void testCreate() {
-        def model = controller.create()
-
-        assert model.zipCodeInstance != null
+        assert model.zipCodeMap.size() == 0
     }
 
     void testCreateZip() {
+        ZipCodeDataService.metaClass.loadAllStates = { ->
+            saveZipData(new XmlSlurper().parse("test/integration/postalCodeSearch.xml"))
+        }
+
         def myController = new ZipCodeController()
         myController.zipCodeDataService = new ZipCodeDataService()
         myController.createZip()
-
-        assert ZipCode.count != 0
+        assert "/zipCode/list" == response.redirectedUrl
+        assert ZipCode.count == 100
     }
-
-
 
 }

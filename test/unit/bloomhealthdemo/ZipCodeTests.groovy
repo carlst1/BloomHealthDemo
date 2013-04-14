@@ -11,7 +11,18 @@ import org.junit.*
 @TestFor(ZipCode)
 class ZipCodeTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testCreatingZipCodeFailConstraints() {
+        def zc = new ZipCode();
+        zc.save()
+        assert zc.hasErrors()
     }
+
+    void testCreatingZipCodeSuccess(){
+        def zc = new ZipCode(postalCode: "74833", stateCode: "MA", stateName: "Massachusetts", cityName: "Boston", countyName: "none")
+        def result = zc.save()
+        assert !result.hasErrors()
+        assert ZipCode.count == 1
+    }
+
+
 }

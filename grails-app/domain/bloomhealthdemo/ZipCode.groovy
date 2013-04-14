@@ -2,17 +2,20 @@ package bloomhealthdemo
 
 class ZipCode {
 
-    def postalCode
+    String postalCode
     def latitude
     def longitude
     String stateCode
-    def stateName
+    String stateName
     def adminCode
-    def cityName
-    def countyName
+    String cityName
+    String countyName
 
     static constraints = {
-
+        postalCode(nullable: false, unique: true)
+        adminCode(nullable: true)
+        latitude(nullable: true)
+        longitude(nullable: true)
     }
 }
 
